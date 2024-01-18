@@ -1,0 +1,17 @@
+version: 2.1
+jobs:
+  test:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.41.0-jammy
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run playwright tests
+          command: npm run test
+workflows:
+  e2e_test_workflow:
+    jobs:
+      - test

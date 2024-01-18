@@ -1,23 +1,22 @@
 version: 2.1
 
-executors:
-  pw-jammy-development:
-    docker:
-      - image: mcr.microsoft.com/playwright:v1.41.0-jammy
+orbs:
+  continuation: circleci/continuation@1.0.0
 
 jobs:
-  build:
-    executor: pw-jammy-development
+  helloworld:
+    docker:
+      - image: cimg/node:18.16.1
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Run Playwright Tests
-          command: npm run test
+          name: Echo hello world
+          command: echo "hello world!"
 
 workflows:
-  build-and-test:
+  e2e_test_workflow_on_another_file:
     jobs:
-      - build
+      - helloworld
+      - continuation/continue:
+          name: front_e2e_test
+          configuration_path: .circleci/e2e_test.yml
