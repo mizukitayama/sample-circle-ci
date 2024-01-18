@@ -1,0 +1,24 @@
+{
+  "name": "sample-circle-ci",
+  "version": "1.0.0",
+  "description": "## config validation ``` circleci config validate ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizukitayama/sample-circle-ci.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mizukitayama/sample-circle-ci/issues"
+  },
+  "homepage": "https://github.com/mizukitayama/sample-circle-ci#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "@types/node": "^20.11.5"
+  }
+}

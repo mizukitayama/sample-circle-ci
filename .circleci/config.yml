@@ -1,14 +1,23 @@
 version: 2.1
-jobs:
-  run-test:
+
+executors:
+  pw-jammy-development:
     docker:
       - image: mcr.microsoft.com/playwright:v1.41.0-jammy
+
+jobs:
+  build:
+    executor: pw-jammy-development
     steps:
       - checkout
       - run:
-          name: hello world
-          command: echo "hello world"
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run Playwright Tests
+          command: npm run test
+
 workflows:
-  run-test-workflow:
+  build-and-test:
     jobs:
-      - run-test
+      - build
