@@ -1,0 +1,14 @@
+version: 2.1
+jobs:
+  run-test:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.41.0-jammy
+    steps:
+      - checkout
+      - run:
+          name: hello world
+          command: echo "hello world"
+workflows:
+  run-test-workflow:
+    jobs:
+      - run-test
